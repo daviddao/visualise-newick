@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="bundle.js"></script>
+
+<!-- where the tree will be displayed -->
+<div id="yourDiv"></div>
+
+<script>
+//Get the functions from the global exe object
+var createTree = exe.createTree;
+var updateTree = exe.updateTree;
+
+//opts for your tree
+var opts = {
+        el : document.getElementById("yourDiv"),
+        tree : {
+            data : "(homo_sapiens:12,(mus_musculus:12,(danio_rerio:13,(pan_troglodytes:9,(taeniopygia_guttata:10,callithrix_jacchus:11):12):12):10);",  
+            width : 500,
+            height : 30,
+            scale : false,
+            layoutInput : "vertical",
+        },
+        label : {
+            fontsize : 18,
+            usePics : true, 
+            pics : {
+                pictureWidth : 20,
+                pictureHeight : 20,
+            },
+        },
+        nodes : {
+            toggle : true, 
+            select: false, 
+            size : 5,
+            fill : "grey",
+            stroke : "black",
+            selectedFill : "steelblue",
+            selectedSize : 4,
+        },
+};
+
+//Newick Input
+		var tree;
+		var div = document.getElementById('yourDiv');
+
+		d3.select(div).append("em").text("Input Tree (Newick): ");
+
+		var inputform = d3.select(div)
+							.append("input");
+
+		var button_enter = d3.select(div)
+							.append("button")
+							.text("Enter")
+							.on("click", function() {
+
+								newick = inputform.node().value;
+
+								opts.tree.data = newick;
+								updateTree(tree,opts);
+
+								console.log(newick);
+
+							});
+
+		//Scaling and unscaling of the tree
+		var button_scale = d3.select(div)
+							.append("button")
+							.text("Scale")
+							.on("click", function() {
+								button_scale.attr("hidden","hidden")
+								button_unscale.attr("hidden",null)
+
+								opts.tree.scale = true;
+
+								updateTree(tree,opts);
+							});
+
+		var button_unscale = d3.select(div)
+								.append("button")
+								.text("Unscale")
+								.attr("hidden","hidden")
+								.on("click", function() {
+								button_unscale.attr("hidden","hidden")
+								button_scale.attr("hidden",null)
+
+								opts.tree.scale = false;
+
+								updateTree(tree,opts);
+								
+							    });
+
+		var tree = createTree(opts); //Create a default tree
+
+</script>
+</body>
+</html>
