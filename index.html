@@ -102,6 +102,51 @@ var opts = {
 								
 							    });
 
+		//larger and smaller of the tree
+		var button_thinner = d3.select(div)
+							.append("button")
+							.text("thinner")
+							.on("click", function() {
+
+								opts.tree.width = opts.tree.width - 50;
+
+								updateTree(tree,opts);
+							});
+
+		var button_wider = d3.select(div)
+								.append("button")
+								.text("wider")
+								.on("click", function() {
+								
+								opts.tree.width = opts.tree.width + 50;
+
+								updateTree(tree,opts);
+								
+							    });
+
+		//Scaling and unscaling of the tree
+		var button_heigher = d3.select(div)
+							.append("button")
+							.text("heigher")
+							.on("click", function() {
+
+								opts.label.pics.pictureHeight = opts.label.pics.pictureHeight + 5 ;
+								updateTree(tree,opts);
+							});
+
+		var button_lower = d3.select(div)
+								.append("button")
+								.text("lower")
+								.on("click", function() {
+								
+								opts.label.pics.pictureHeight = opts.label.pics.pictureHeight - 5 ;
+
+								updateTree(tree,opts);
+								
+							    });
+
+		
+
 		var tree = createTree(opts); //Create a default tree
 
 </script>
