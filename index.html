@@ -75,6 +75,34 @@ var opts = {
 
 							});
 
+		//Radial or vertical
+		var button_radial = d3.select(div)
+							.append("button")
+							.text("Radial")
+							.on("click", function() {
+								button_radial.attr("hidden","hidden")
+								button_vertical.attr("hidden",null)
+								
+								opts.tree.layoutInput = "radial";
+
+								updateTree(tree,opts);
+							});
+
+		var button_vertical = d3.select(div)
+								.append("button")
+								.text("Vertical")
+								.attr("hidden","hidden")
+								.on("click", function() {
+								button_vertical.attr("hidden","hidden")
+								button_radial.attr("hidden",null)
+
+								opts.tree.layoutInput = "vertical";
+
+								updateTree(tree,opts);
+								
+							    });
+
+
 		//Scaling and unscaling of the tree
 		var button_scale = d3.select(div)
 							.append("button")
