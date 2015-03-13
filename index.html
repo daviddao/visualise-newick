@@ -133,7 +133,7 @@ var opts = {
 		//larger and smaller of the tree
 		var button_thinner = d3.select(div)
 							.append("button")
-							.text("thinner")
+							.text("width--")
 							.on("click", function() {
 
 								opts.tree.width = opts.tree.width - 50;
@@ -143,7 +143,7 @@ var opts = {
 
 		var button_wider = d3.select(div)
 								.append("button")
-								.text("wider")
+								.text("width++")
 								.on("click", function() {
 								
 								opts.tree.width = opts.tree.width + 50;
@@ -155,7 +155,7 @@ var opts = {
 		//Scaling and unscaling of the tree
 		var button_heigher = d3.select(div)
 							.append("button")
-							.text("heigher")
+							.text("height++")
 							.on("click", function() {
 
 								opts.label.pics.pictureHeight = opts.label.pics.pictureHeight + 5 ;
@@ -164,7 +164,7 @@ var opts = {
 
 		var button_lower = d3.select(div)
 								.append("button")
-								.text("lower")
+								.text("height--")
 								.on("click", function() {
 								
 								opts.label.pics.pictureHeight = opts.label.pics.pictureHeight - 5 ;
